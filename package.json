@@ -1,0 +1,32 @@
+{
+  "name": "forcehp",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-class-properties": "^7.24.7",
+    "@fortawesome/fontawesome-free": "^6.5.2",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "consola": "^3.2.3",
+    "core-js": "^3.25.3",
+    "glob": "^10.4.2",
+    "jquery": "^3.7.1",
+    "lru-cache": "^10.2.2",
+    "nuxt": "^3.12.2",
+    "rimraf": "^5.0.7",
+    "swiper": "^8.4.7",
+    "vue": "^3.4.29",
+    "vue-awesome-swiper": "^5.0.1",
+    "vue-server-renderer": "^2.2.6",
+    "vue-template-compiler": "^2.7.10"
+  },
+  "devDependencies": {
+    "@nuxt/types": "^2.15.8",
+    "@nuxt/typescript-build": "^2.1.0"
+  }
+}
