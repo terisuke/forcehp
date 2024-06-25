@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div class="loader" v-if="isLoading">
-      <p class="txt">ふわっと出す</p>
-    </div>
     <div class="hero" ref="hero">
       <div class="hero-slideshow">
         <div class="hero-slide" v-for="(image, index) in heroImages" :key="index" :style="{ backgroundImage: `url(${image})` }"></div>
@@ -36,8 +33,8 @@
       <section id="access" class="section">
         <div class="container">
           <h2 class="section-title">アクセス</h2>
-          <p class="access">本社: 福岡県福岡市中央区赤坂1-14-22センチュリー赤坂門ビル8階</p>
-          <p class="access">支店: 福岡県福岡市中央区渡辺通2-1-19シーボート渡辺通203号</p>
+          <p class="access">本社: 福岡県福岡市中央区赤坂1-14-22</p>
+          <p class="access">支店: 福岡県福岡市中央区港2-1-19</p>
           <div class="map-wrap">
             <div class="map">
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.6029636061335!2d130.3864394763216!3d33.58965654201345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35419229b417ea63%3A0x34e7fb566bc0273e!2z44CSODEwLTAwNDIg56aP5bKh55yM56aP5bKh5biC5Lit5aSu5Yy66LWk5Z2C77yR5LiB55uu77yR77yU4oiS77yS77ySIOOCu-ODs-ODgeODpeODquODvOi1pOWdgumWgOODk-ODqw!5e0!3m2!1sja!2sjp!4v1719143668249!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -77,29 +74,33 @@
       <section id="contact" class="section">
         <div class="container">
           <h2 class="section-title">お問い合わせ</h2>
-          <form>
+          <form action="https://ssgform.com/s/HXoGA4ws23Ea" method="post">
             <div class="Form">
+              <!-- Honeypotフィールド -->
+              <div style="display:none;">
+                <input type="text" name="honeypot" ref="honeypot" tabindex="-1" autocomplete="off">
+              </div>
               <div class="Form-Item">
                 <p class="Form-Item-Label">
-                  <span class="Form-Item-Label-Required">必須</span>会社名
+                会社名
                 </p>
-                <input type="text" class="Form-Item-Input" placeholder="例）株式会社令和">
+                <input type="text" class="Form-Item-Input"  placeholder="例）株式会社令和">
               </div>
               <div class="Form-Item">
                 <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>氏名</p>
-                <input type="text" class="Form-Item-Input" placeholder="例）山田太郎">
+                <input type="text" class="Form-Item-Input" required="required"  placeholder="例）山田太郎">
               </div>
               <div class="Form-Item">
-                <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>電話番号</p>
+                <p class="Form-Item-Label">電話番号</p>
                 <input type="text" class="Form-Item-Input" placeholder="例）000-0000-0000">
               </div>
               <div class="Form-Item">
                 <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>メールアドレス</p>
-                <input type="email" class="Form-Item-Input" placeholder="例）example@gmail.com">
+                <input type="email" class="Form-Item-Input" required="required"  placeholder="例）example@gmail.com">
               </div>
               <div class="Form-Item">
                 <p class="Form-Item-Label isMsg"><span class="Form-Item-Label-Required">必須</span>お問い合わせ内容</p>
-                <textarea class="Form-Item-Textarea"></textarea>
+                <textarea class="Form-Item-Textarea" required="required" ></textarea>
               </div>
               <input type="submit" class="Form-Btn" value="送信する">
             </div>
@@ -112,7 +113,7 @@
 </template>
 
 <script>
-import { onMounted, onBeforeUnmount, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 export default {
   setup() {
@@ -120,16 +121,19 @@ export default {
     const about = ref(null)
     const currentSlide = ref(0)
     const heroImages = ref([])
+    const isMenuOpen = ref(false)
+    const isLoading = ref(true)
+    const honeypot = ref(null)
 
     const services = [
-      { name: '企業コンサルタント業', icon: 'fas fa-briefcase' },
-      { name: '融資調査紹介コンサル', icon: 'fas fa-search-dollar' },
+      { name: '資金調達融資コンサル', icon: 'fas fa-search-dollar' },
       { name: '補助金・助成金サポートコンサル', icon: 'fas fa-hand-holding-usd' },
-      { name: '建設業・リフォーム業', icon: 'fas fa-hard-hat' },
-      { name: 'サ高住・老人ホーム設備管理・営繕工事の管理・運営', icon: 'fas fa-home' },
+      { name: '建設業・リフォーム・卸小売業', icon: 'fas fa-hard-hat' },
+      { name: '不動産売買紹介', icon: 'fas fa-home' },
       { name: '建物設備管理', icon: 'fas fa-building' },
-      { name: 'LED照明・電子器具・建築資材の卸小売', icon: 'fas fa-lightbulb' },
-      { name: '海外商品輸入加工販売及び国内製品輸出業代理店', icon: 'fas fa-globe' }
+      { name: '海外商品輸入加工販売及び国内製品輸出業代理店', icon: 'fas fa-globe' },
+      { name: '企業M&A紹介', icon: 'fas fa-home' },
+      { name: '有料職業紹介', icon: 'fas fa-briefcase' }
     ]
 
     const serviceColors = [
@@ -147,14 +151,45 @@ export default {
       }, 3000)
     }
 
+    const preloadImages = async (images) => {
+      const promises = images.map((src) => {
+        return new Promise((resolve) => {
+          const img = new Image()
+          img.src = src
+          img.onload = resolve
+        })
+      })
+      return Promise.all(promises)
+    }
+
     onMounted(async () => {
       heroImages.value = [
         (await import('~/assets/img/hero.png')).default,
         (await import('~/assets/img/hero2.png')).default,
         (await import('~/assets/img/hero3.png')).default
       ]
+
+      await preloadImages(heroImages.value)
       startSlideshow()
+
+      // Honeypotフィールドのチェックロジックを追加
+      const form = document.querySelector('form')
+      form.addEventListener('submit', (event) => {
+        if (honeypot.value !== '') {
+          // スパムの可能性がある場合、フォームを送信しない
+          event.preventDefault()
+        }
+      })
+      
+      // ローディング画面の非表示
+      setTimeout(() => {
+        isLoading.value = false
+      }, 700)
     })
+
+    const closeMenu = () => {
+      isMenuOpen.value = false
+    }
 
     return {
       hero,
@@ -162,7 +197,11 @@ export default {
       heroImages,
       currentSlide,
       services,
-      serviceColors
+      serviceColors,
+      isMenuOpen,
+      isLoading,
+      honeypot,
+      closeMenu
     }
   }
 }
