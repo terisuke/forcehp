@@ -126,14 +126,14 @@ export default {
     const honeypot = ref(null)
 
     const services = [
-      { name: '資金調達融資コンサル', icon: 'fas fa-search-dollar' },
-      { name: '補助金・助成金サポートコンサル', icon: 'fas fa-hand-holding-usd' },
-      { name: '建設業・リフォーム・卸小売業', icon: 'fas fa-hard-hat' },
-      { name: '不動産売買紹介', icon: 'fas fa-home' },
-      { name: '建物設備管理', icon: 'fas fa-building' },
-      { name: '海外商品輸入加工販売及び国内製品輸出業代理店', icon: 'fas fa-globe' },
-      { name: '企業M&A紹介', icon: 'fas fa-home' },
-      { name: '有料職業紹介', icon: 'fas fa-briefcase' }
+      { name: '事業資金融資コンサル・開業コンサル', icon: 'fas fa-home' },
+      { name: '補助金・助成金申請サポートコンサル', icon: 'fas fa-hand-holding-usd' },
+      { name: '有料職業紹介事業・人材調達コンサル', icon: 'fas fa-briefcase' },
+      { name: 'M&A紹介及び代行事業', icon: 'fas fa-search-dollar' },
+      { name: '不動産売買及び物件紹介事業', icon: 'fas fa-building' },
+      { name: '福祉・医療関係コンサル', icon: 'fas fa-hospital' },
+      { name: '卸・小売り・輸出輸入物販売', icon: 'fas fa-globe' },
+      { name: 'リフォーム事業・物件管理業', icon: 'fas fa-hard-hat' },
     ]
 
     const serviceColors = [
