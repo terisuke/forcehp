@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt dev",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate"
@@ -21,12 +21,9 @@
     "rimraf": "^5.0.7",
     "swiper": "^8.4.7",
     "vue": "^3.4.29",
-    "vue-awesome-swiper": "^5.0.1",
-    "vue-server-renderer": "^2.2.6",
-    "vue-template-compiler": "^2.7.10"
+    "vue-awesome-swiper": "^5.0.1"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.15.8",
-    "@nuxt/typescript-build": "^2.1.0"
+    "@nuxt/typescript-runtime": "^3.0.0"
   }
 }

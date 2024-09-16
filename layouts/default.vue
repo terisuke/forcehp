@@ -4,7 +4,7 @@
       <Loading v-if="isLoading" />
     </transition>
     <div v-show="!isLoading">
-      <header class="header">
+      <header :class="{'service1-header': $route.name === 'service1'}">
         <div class="navtext-container">
           <div class="navtext">株式会社フォース</div>
         </div>
@@ -21,7 +21,7 @@
       <main>
         <NuxtPage />
       </main>
-      <footer>
+      <footer :class="{'service1-footer': $route.name === 'service1'}">
         <p>&copy; 2024 株式会社フォース. All rights reserved.</p>
       </footer>
     </div>
@@ -73,5 +73,11 @@ export default {
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0;
+}
+.service1-header {
+  background-color: #FFB3BA;
+}
+.service1-footer {
+  background-color: #FFB3BA;
 }
 </style>

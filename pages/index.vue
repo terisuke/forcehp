@@ -23,8 +23,14 @@
           <h2 class="section-title">事業内容</h2>
           <div class="service-grid">
             <div class="service-item" v-for="(service, index) in services" :key="index" :style="{ backgroundColor: serviceColors[index] }">
-              <i :class="service.icon"></i>
-              <p>{{ service.name }}</p>
+              <NuxtLink v-if="index === 0" to="/service1" class="service-link">
+                <i :class="service.icon"></i>
+                <p>{{ service.name }}</p>
+              </NuxtLink>
+              <template v-else>
+                <i :class="service.icon"></i>
+                <p>{{ service.name }}</p>
+              </template>
             </div>
           </div>
         </div>
@@ -47,26 +53,28 @@
         <div class="container">
           <h2 class="section-title">会社概要</h2>
           <table>
-            <tr>
-              <th>会社名</th>
-              <td>株式会社フォース</td>
-            </tr>
-            <tr>
-              <th>設立</th>
-              <td>2020年2月6日</td>
-            </tr>
-            <tr>
-              <th>資本金</th>
-              <td>500万円</td>
-            </tr>
-            <tr>
-              <th>代表者</th>
-              <td>代表取締役 香川 昭</td>
-            </tr>
-            <tr>
-              <th>従業員数</th>
-              <td>3名 (パート2名含む、2023年11月10日現在)</td>
-            </tr>
+            <tbody>
+              <tr>
+                <th>会社名</th>
+                <td>株式会社フォース</td>
+              </tr>
+              <tr>
+                <th>設立</th>
+                <td>2020年2月6日</td>
+              </tr>
+              <tr>
+                <th>資本金</th>
+                <td>500万円</td>
+              </tr>
+              <tr>
+                <th>代表者</th>
+                <td>代表取締役 香川 昭</td>
+              </tr>
+              <tr>
+                <th>従業員数</th>
+                <td>3名 (パート2名含む、2023年11月10日現在)</td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </section>
@@ -141,16 +149,6 @@ export default {
       '#FFD9BA', '#E6BAFF', '#BAD3FF', '#FFBAF2'
     ]
 
-    const startSlideshow = () => {
-      setInterval(() => {
-        currentSlide.value = (currentSlide.value + 1) % heroImages.value.length
-        const slides = hero.value.querySelectorAll('.hero-slide')
-        slides.forEach((slide, index) => {
-          slide.style.opacity = index === currentSlide.value ? 1 : 0
-        })
-      }, 3000)
-    }
-
     const preloadImages = async (images) => {
       const promises = images.map((src) => {
         return new Promise((resolve) => {
@@ -170,6 +168,18 @@ export default {
       ]
 
       await preloadImages(heroImages.value)
+
+      // hero 要素がマウントされた後にスライドショーを開始
+      const startSlideshow = () => {
+        setInterval(() => {
+          currentSlide.value = (currentSlide.value + 1) % heroImages.value.length
+          const slides = hero.value.querySelectorAll('.hero-slide')
+          slides.forEach((slide, index) => {
+            slide.style.opacity = index === currentSlide.value ? 1 : 0
+          })
+        }, 3000)
+      }
+
       startSlideshow()
 
       // Honeypotフィールドのチェックロジックを追加
@@ -208,5 +218,9 @@ export default {
 </script>
 
 <style scoped>
-
+.service-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
 </style>
