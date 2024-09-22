@@ -56,7 +56,7 @@
         <NuxtPage />
       </main>
       <footer :class="{ 'service1-footer': $route.name === 'service1', 'service2-footer': $route.name === 'service2', 'service3-footer': $route.name === 'service3', 'service4-footer': $route.name === 'service4', 'service5-footer': $route.name === 'service5', 'service6-footer': $route.name === 'service6', 'service7-footer': $route.name === 'service7', 'service8-footer': $route.name === 'service8' }">
-        <p>© 2024 株式会社フォース. All rights reserved.</p>
+        <p @click="$router.push('/')" style="cursor: pointer;">© 2024 株式会社フォース. All rights reserved.</p>
       </footer>
     </div>
   </div>
