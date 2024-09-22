@@ -6,46 +6,51 @@
     <div v-show="!isLoading">
       <header :class="{ 'service1-header': $route.name === 'service1', 'service2-header': $route.name === 'service2', 'service3-header': $route.name === 'service3', 'service4-header': $route.name === 'service4', 'service5-header': $route.name === 'service5', 'service6-header': $route.name === 'service6', 'service7-header': $route.name === 'service7', 'service8-header': $route.name === 'service8' }">
         <div class="navtext-container" @click="$router.push('/')" style="cursor: pointer;">
-          <div class="navtext">株式会社フォース</div>
+          <div class="navtext" style="color: white; text-shadow: 0 0 2px black;">株式会社フォース</div>
         </div>
         <input type="checkbox" class="menu-btn" id="menu-btn" v-model="isMenuOpen">
-        <label for="menu-btn" class="menu-icon"><span class="navicon"></span></label>
+        <label for="menu-btn" class="menu-icon"><span class="navicon" style="text-shadow: 0 0 2px black;"></span></label>
         <ul class="menu" :class="{ 'menu-open': isMenuOpen }"
           :style="{ backgroundColor: $route.name === 'service1' ? '#FFB3BA' : ($route.name === 'service2' ? '#BAFFC9' : ($route.name === 'service3' ? '#BAE1FF' : ($route.name === 'service4' ? '#FFFFBA' : ($route.name === 'service5' ? '#FFD9BA' : ($route.name === 'service6' ? '#E6BAFF' : ($route.name === 'service7' ? '#BAD3FF' : ($route.name === 'service8' ? '#FFBAF2' : ''))))))) }">
-          <li v-if="$route.name === 'index'"><a href="#about" @click="closeMenu">会社紹介</a></li>
-          <li v-if="$route.name === 'index'"><a href="#services" @click="closeMenu">事業内容</a></li>
-          <li v-if="$route.name === 'index'"><a href="#access" @click="closeMenu">アクセス</a></li>
-          <li v-if="$route.name === 'index'"><a href="#company" @click="closeMenu">会社概要</a></li>
-          <li v-if="$route.name === 'index'"><a href="#contact" @click="closeMenu">お問い合わせ</a></li>
-          <li v-if="$route.name === 'service1'"><a href="#service-overview" @click="closeMenu">サービス概要</a></li>
-          <li v-if="$route.name === 'service1'"><a href="#features" @click="closeMenu">特徴</a></li>
-          <li v-if="$route.name === 'service1'"><a href="#finance-support" @click="closeMenu">融資サポート</a></li>
-          <li v-if="$route.name === 'service1'"><a href="#contact" @click="closeMenu">お問い合わせ</a></li>
-          <li v-if="$route.name === 'service2'"><a href="#service-overview" @click="closeMenu">サービス概要</a></li>
-          <li v-if="$route.name === 'service2'"><a href="#features" @click="closeMenu">特徴</a></li>
-          <li v-if="$route.name === 'service2'"><a href="#process" @click="closeMenu">人材調達のプロセス</a></li>
-          <li v-if="$route.name === 'service2'"><a href="#contact" @click="closeMenu">お問い合わせ</a></li>
-          <li v-if="$route.name === 'service3'"><a href="#service-overview" @click="closeMenu">サービス概要</a></li>
-          <li v-if="$route.name === 'service3'"><a href="#features" @click="closeMenu">特徴</a></li>
-          <li v-if="$route.name === 'service3'"><a href="#types" @click="closeMenu">補助金・助成金の種類</a></li>
-          <li v-if="$route.name === 'service3'"><a href="#contact" @click="closeMenu">お問い合わせ</a></li>
-          <li v-if="$route.name === 'service4'"><a href="#service-overview" @click="closeMenu">サービス概要</a></li>
-          <li v-if="$route.name === 'service4'"><a href="#features" @click="closeMenu">特徴</a></li>
-          <li v-if="$route.name === 'service4'"><a href="#contact" @click="closeMenu">お問い合わせ</a></li>
-          <li v-if="$route.name === 'service5'"><a href="#service-overview" @click="closeMenu">サービス概要</a></li>
-          <li v-if="$route.name === 'service5'"><a href="#features" @click="closeMenu">特徴</a></li>
-          <li v-if="$route.name === 'service5'"><a href="#process" @click="closeMenu">物件紹介のプロセス</a></li>
-          <li v-if="$route.name === 'service5'"><a href="#contact" @click="closeMenu">お問い合わせ</a></li>
-          <li v-if="$route.name === 'service6'"><a href="#service-overview" @click="closeMenu">サービス概要</a></li>
-          <li v-if="$route.name === 'service6'"><a href="#features" @click="closeMenu">特徴</a></li>
-          <li v-if="$route.name === 'service6'"><a href="#contact" @click="closeMenu">お問い合わせ</a></li>
-          <li v-if="$route.name === 'service7'"><a href="#service-overview" @click="closeMenu">サービス概要</a></li>
-          <li v-if="$route.name === 'service7'"><a href="#features" @click="closeMenu">特徴</a></li>
-          <li v-if="$route.name === 'service7'"><a href="#contact" @click="closeMenu">お問い合わせ</a></li>
-          <li v-if="$route.name === 'service8'"><a href="#service-overview" @click="closeMenu">サービス概要</a></li>
-          <li v-if="$route.name === 'service8'"><a href="#features" @click="closeMenu">特徴</a></li>
-          <li v-if="$route.name === 'service8'"><a href="#contact" @click="closeMenu">お問い合わせ</a></li>
+          <li v-if="$route.name === 'index'"><a href="#about" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">会社紹介</a></li>
+          <li v-if="$route.name === 'index'"><a href="#services" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">事業内容</a></li>
+          <li v-if="$route.name === 'index'"><a href="#access" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">アクセス</a></li>
+          <li v-if="$route.name === 'index'"><a href="#company" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">会社概要</a></li>
+          <li v-if="$route.name === 'index'"><a href="#contact" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">お問い合わせ</a></li>
+          <li v-if="$route.name === 'service1'"><a href="#service-overview" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">サービス概要</a></li>
+          <li v-if="$route.name === 'service1'"><a href="#features" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">特徴</a></li>
+          <li v-if="$route.name === 'service1'"><a href="#finance-support" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">融資サポート</a></li>
+          <li v-if="$route.name === 'service1'"><a href="#contact" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">お問い合わせ</a></li>
+          <li v-if="$route.name === 'service2'"><a href="#service-overview" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">サービス概要</a></li>
+          <li v-if="$route.name === 'service2'"><a href="#features" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">特徴</a></li>
+          <li v-if="$route.name === 'service2'"><a href="#process" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">人材調達のプロセス</a></li>
+          <li v-if="$route.name === 'service2'"><a href="#contact" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">お問い合わせ</a></li>
+          <li v-if="$route.name === 'service3'"><a href="#service-overview" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">サービス概要</a></li>
+          <li v-if="$route.name === 'service3'"><a href="#features" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">特徴</a></li>
+          <li v-if="$route.name === 'service3'"><a href="#types" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">補助金・助成金の種類</a></li>
+          <li v-if="$route.name === 'service3'"><a href="#contact" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">お問い合わせ</a></li>
+          <li v-if="$route.name === 'service4'"><a href="#service-overview" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">サービス概要</a></li>
+          <li v-if="$route.name === 'service4'"><a href="#features" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">特徴</a></li>
+          <li v-if="$route.name === 'service4'"><a href="#contact" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">お問い合わせ</a></li>
+          <li v-if="$route.name === 'service5'"><a href="#service-overview" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">サービス概要</a></li>
+          <li v-if="$route.name === 'service5'"><a href="#features" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">特徴</a></li>
+          <li v-if="$route.name === 'service5'"><a href="#process" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">物件紹介のプロセス</a></li>
+          <li v-if="$route.name === 'service5'"><a href="#contact" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">お問い合わせ</a></li>
+          <li v-if="$route.name === 'service6'"><a href="#service-overview" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">サービス概要</a></li>
+          <li v-if="$route.name === 'service6'"><a href="#features" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">特徴</a></li>
+          <li v-if="$route.name === 'service6'"><a href="#contact" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">お問い合わせ</a></li>
+          <li v-if="$route.name === 'service7'"><a href="#service-overview" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">サービス概要</a></li>
+          <li v-if="$route.name === 'service7'"><a href="#features" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">特徴</a></li>
+          <li v-if="$route.name === 'service7'"><a href="#contact" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">お問い合わせ</a></li>
+          <li v-if="$route.name === 'service8'"><a href="#service-overview" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">サービス概要</a></li>
+          <li v-if="$route.name === 'service8'"><a href="#features" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">特徴</a></li>
+          <li v-if="$route.name === 'service8'"><a href="#contact" @click="closeMenu" style="color: white; text-shadow: 0 0 2px black;">お問い合わせ</a></li>
         </ul>
+        <div class="cart-icon-container">
+          <a href="https://force.supersale.jp/" target="_blank" >
+            <img src="@/assets/img/cart-icon-black.png" alt="カートアイコン" class="cart-icon">
+          </a>
+        </div>
       </header>
       <main>
         <NuxtPage />

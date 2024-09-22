@@ -30,6 +30,8 @@ body {
     color: white;
     text-align: center;
     z-index: 100;
+    /* 白文字に黒の縁取りを追加 */
+    text-shadow: 0 0 2px black;
 }
 
 .hero h1 {
@@ -63,6 +65,7 @@ table {
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    text-shadow: 0 0 2px black;
 }
 
 .btn:hover {
@@ -205,6 +208,10 @@ table {
     position: fixed;
     width: 100%;
     height: 52px;
+    display: flex; /* ヘッダーをフレックスボックスに */
+    justify-content: space-between; /* ハンバーガーメニューとカートアイコンの間隔を調整 */
+    align-items: center; /* 垂直方向の中央揃え */
+    padding: 0 20px; /* 左右に余白を追加 */
 }
 
 /* Nav items */
@@ -269,12 +276,13 @@ table {
 }
 
 .navicon {
-    background: white;
+    background: black;
     display: block;
     height: 3px;
-    width: 26px;
+    width: 40px;
     position: relative;
     transition: 0.3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.1008s;
+    margin-left: 20%;
 }
 
 .navicon:before,
@@ -284,16 +292,18 @@ table {
     height: 100%;
     width: 100%;
     position: absolute;
-    background: white;
+    background: black;
     transition: 0.3192s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.1008s;
 }
 
 .navicon:before {
     top: 9px;
+    background: black;
 }
 
 .navicon:after {
     bottom: 9px;
+    background: black;
 }
 
 /* Hamburger Menu Animation Start */
@@ -335,8 +345,10 @@ table {
     text-transform: uppercase;
     color: white;
     letter-spacing: 4px;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
+    /* 白文字に黒の縁取りを追加 */
+    text-shadow: 0 0 2px black;
 }
 
 .hero {
@@ -479,8 +491,8 @@ table {
 
 .hero-content h1,
 .hero-content p {
-    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
-    /* テキストの可読性を向上 */
+    /* 白文字に黒の縁取りを追加 */
+    text-shadow: 0 0 2px black;
 }
 
 .hero-slide {
@@ -502,6 +514,8 @@ table {
     color: white;
     width: 80%;
     max-width: 1200px;
+    /* 白文字に黒の縁取りを追加 */
+    text-shadow: 0 0 2px black;
 }
 
 .hero-content h1 {
@@ -594,6 +608,7 @@ footer {
     color: white;
     text-align: center;
     padding: 1rem 0;
+    text-shadow: 0 0 2px black;
 }
 .load {
     width: 100vw;
@@ -804,4 +819,17 @@ footer {
         top: 1rem;
         left: 1rem;
     }
+}
+
+/* カートアイコンのスタイル */
+.cart-icon {
+    width: 40px; /* ハンバーガーメニューと同じサイズに */
+    height: 40px; /* ハンバーガーメニューと同じサイズに */
+}
+.cart-icon-container {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    margin-right: 2%;
 }
