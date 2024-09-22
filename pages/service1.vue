@@ -1,19 +1,5 @@
-承知しました。ご指定の修正を反映いたします。テキストとボタンを中央寄せにし、メインカラーを`#FFB3BA`に変更します。以下が修正後のコードです：
-
 <template>
   <div>
-    <header>
-      <nav>
-        <ul>
-          <li><NuxtLink to="/">ホーム</NuxtLink></li>
-          <li><a href="#service-overview">サービス概要</a></li>
-          <li><a href="#features">特徴</a></li>
-          <li><a href="#finance-support">融資サポート</a></li>
-          <li><a href="#contact">お問い合わせ</a></li>
-        </ul>
-      </nav>
-    </header>
-
     <main>
       <section class="hero">
         <div class="hero-background service"></div>
@@ -75,6 +61,7 @@
           <NuxtLink to="/#contact" class="btn">お問い合わせフォームへ</NuxtLink>
         </div>
       </section>
+      <a class="back" href="#"></a>
     </main>
   </div>
 </template>

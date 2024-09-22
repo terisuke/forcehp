@@ -27,6 +27,34 @@
                 <i :class="service.icon"></i>
                 <p>{{ service.name }}</p>
               </NuxtLink>
+              <NuxtLink v-else-if="index === 1" to="/service2" class="service-link">
+                <i :class="service.icon"></i>
+                <p>{{ service.name }}</p>
+              </NuxtLink>
+              <NuxtLink v-else-if="index === 2" to="/service3" class="service-link">
+                <i :class="service.icon"></i>
+                <p>{{ service.name }}</p>
+              </NuxtLink>
+              <NuxtLink v-else-if="index === 3" to="/service4" class="service-link">
+                <i :class="service.icon"></i>
+                <p>{{ service.name }}</p>
+              </NuxtLink>
+              <NuxtLink v-else-if="index === 4" to="/service5" class="service-link">
+                <i :class="service.icon"></i>
+                <p>{{ service.name }}</p>
+              </NuxtLink>
+              <NuxtLink v-else-if="index === 5" to="/service6" class="service-link">
+                <i :class="service.icon"></i>
+                <p>{{ service.name }}</p>
+              </NuxtLink>
+              <NuxtLink v-else-if="index === 6" to="/service7" class="service-link">
+                <i :class="service.icon"></i>
+                <p>{{ service.name }}</p>
+              </NuxtLink>
+              <NuxtLink v-else-if="index === 7" to="/service8" class="service-link">
+                <i :class="service.icon"></i>
+                <p>{{ service.name }}</p>
+              </NuxtLink>
               <template v-else>
                 <i :class="service.icon"></i>
                 <p>{{ service.name }}</p>
@@ -72,7 +100,19 @@
               </tr>
               <tr>
                 <th>従業員数</th>
-                <td>3名 (パート2名含む、2023年11月10日現在)</td>
+                <td>15名 (パート2名含む、2024年9月17日現在)</td>
+              </tr>
+              <tr>
+                <th>電話番号</th>
+                <td><a href="tel:092-600-6023">092-600-6023</a></td>
+              </tr>
+              <tr>
+                <th>FAX番号</th>
+                <td>050-3730-1032</td>
+              </tr>
+              <tr>
+                <th>メール</th>
+                <td><a href="mailto:force.kk0808@gmail.com">force.kk0808@gmail.com</a></td>
               </tr>
             </tbody>
           </table>
@@ -121,7 +161,7 @@
 </template>
 
 <script>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, nextTick } from 'vue'
 
 export default {
   setup() {
@@ -135,8 +175,8 @@ export default {
 
     const services = [
       { name: '事業資金融資コンサル・開業コンサル', icon: 'fas fa-home' },
-      { name: '補助金・助成金申請サポートコンサル', icon: 'fas fa-hand-holding-usd' },
-      { name: '有料職業紹介事業・人材調達コンサル', icon: 'fas fa-briefcase' },
+      { name: '有料職業紹介事業・人材調達コンサル', icon: 'fas fa-hand-holding-usd' },
+      { name: '補助金・助成金申請サポートコンサル', icon: 'fas fa-briefcase' },
       { name: 'M&A紹介及び代行事業', icon: 'fas fa-search-dollar' },
       { name: '不動産売買及び物件紹介事業', icon: 'fas fa-building' },
       { name: '福祉・医療関係コンサル', icon: 'fas fa-hospital' },
@@ -170,17 +210,19 @@ export default {
       await preloadImages(heroImages.value)
 
       // hero 要素がマウントされた後にスライドショーを開始
-      const startSlideshow = () => {
-        setInterval(() => {
-          currentSlide.value = (currentSlide.value + 1) % heroImages.value.length
-          const slides = hero.value.querySelectorAll('.hero-slide')
-          slides.forEach((slide, index) => {
-            slide.style.opacity = index === currentSlide.value ? 1 : 0
-          })
-        }, 3000)
-      }
+      nextTick(() => {
+        const startSlideshow = () => {
+          setInterval(() => {
+            currentSlide.value = (currentSlide.value + 1) % heroImages.value.length
+            const slides = hero.value.querySelectorAll('.hero-slide')
+            slides.forEach((slide, index) => {
+              slide.style.opacity = index === currentSlide.value ? 1 : 0
+            })
+          }, 3000)
+        }
 
-      startSlideshow()
+        startSlideshow()
+      })
 
       // Honeypotフィールドのチェックロジックを追加
       const form = document.querySelector('form')
