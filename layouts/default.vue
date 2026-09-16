@@ -79,7 +79,7 @@ export default {
     this.$nextTick(() => {
       setTimeout(() => {
         this.isLoading = false
-      }, 1650)
+      }, 900)
     })
     document.addEventListener('click', this.handleClickOutside);
   },
