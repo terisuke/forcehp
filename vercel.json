@@ -5,6 +5,12 @@
   "outputDirectory": ".output/public",
   "redirects": [
     {
+      "source": "/",
+      "has": [{ "type": "host", "value": "forcehp.vercel.app" }],
+      "destination": "https://forcehp.org/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "forcehp.vercel.app" }],
       "destination": "https://forcehp.org/:path*",
