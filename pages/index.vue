@@ -2,10 +2,10 @@
   <div>
     <div class="hero" ref="hero">
       <div class="hero-slideshow">
-        <div class="hero-slide" v-for="(image, index) in heroImages" :key="index" :style="{ backgroundImage: `url(${image})` }"></div>
+        <div class="hero-slide" v-for="(image, index) in heroImages" :key="index" :style="{ backgroundImage: `url(${image})`, opacity: index === currentSlide ? 1 : 0 }"></div>
       </div>
       <div class="hero-content">
-        <h1>新たなステップへ伴走する</h1>
+        <h1><span class="ib">新たなステップへ</span><span class="ib">伴走する</span></h1>
         <p>株式会社フォース</p>
       </div>
     </div>
@@ -161,17 +161,27 @@
 </template>
 
 <script>
-import { onMounted, ref, nextTick } from 'vue'
+import { onMounted, onBeforeUnmount, ref } from 'vue'
+import { useHead } from '#imports'
+import hero1 from '~/assets/img/hero.webp'
+import hero2 from '~/assets/img/hero2.webp'
+import hero3 from '~/assets/img/hero3.webp'
 
 export default {
   setup() {
     const hero = ref(null)
     const about = ref(null)
     const currentSlide = ref(0)
-    const heroImages = ref([])
+    const heroImages = ref([hero1, hero2, hero3])
     const isMenuOpen = ref(false)
     const isLoading = ref(true)
     const honeypot = ref(null)
+
+    useHead({
+      link: [
+        { rel: 'preload', as: 'image', href: hero1, fetchpriority: 'high' }
+      ]
+    })
 
     const services = [
       { name: '事業資金融資コンサル・開業コンサル', icon: 'fas fa-home' },
@@ -189,40 +199,13 @@ export default {
       '#FFD9BA', '#E6BAFF', '#BAD3FF', '#FFBAF2'
     ]
 
-    const preloadImages = async (images) => {
-      const promises = images.map((src) => {
-        return new Promise((resolve) => {
-          const img = new Image()
-          img.src = src
-          img.onload = resolve
-        })
-      })
-      return Promise.all(promises)
-    }
+    let slideTimer = null
 
-    onMounted(async () => {
-      heroImages.value = [
-        (await import('~/assets/img/hero.png')).default,
-        (await import('~/assets/img/hero2.png')).default,
-        (await import('~/assets/img/hero3.png')).default
-      ]
-
-      await preloadImages(heroImages.value)
-
-      // hero 要素がマウントされた後にスライドショーを開始
-      nextTick(() => {
-        const startSlideshow = () => {
-          setInterval(() => {
-            currentSlide.value = (currentSlide.value + 1) % heroImages.value.length
-            const slides = hero.value.querySelectorAll('.hero-slide')
-            slides.forEach((slide, index) => {
-              slide.style.opacity = index === currentSlide.value ? 1 : 0
-            })
-          }, 3000)
-        }
-
-        startSlideshow()
-      })
+    onMounted(() => {
+      // スライドショーはopacityのバインドで制御（初回表示を待たせない）
+      slideTimer = setInterval(() => {
+        currentSlide.value = (currentSlide.value + 1) % heroImages.value.length
+      }, 3000)
 
       // Honeypotフィールドのチェックロジックを追加
       const form = document.querySelector('form')
@@ -232,11 +215,15 @@ export default {
           event.preventDefault()
         }
       })
-      
+
       // ローディング画面の非表示
       setTimeout(() => {
         isLoading.value = false
       }, 700)
+    })
+
+    onBeforeUnmount(() => {
+      clearInterval(slideTimer)
     })
 
     const closeMenu = () => {

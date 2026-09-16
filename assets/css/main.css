@@ -337,6 +337,8 @@ table {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* ハンバーガー(左)とカート(右)に被らないよう両側を確保 */
+    padding: 0 76px;
 }
 
 /* Navbar Text */
@@ -345,7 +347,8 @@ table {
     text-transform: uppercase;
     color: white;
     letter-spacing: 4px;
-    font-size: 2rem;
+    font-size: clamp(1.15rem, 5vw, 2rem);
+    white-space: nowrap;
     font-weight: bold;
     /* 白文字に黒の縁取りを追加 */
     text-shadow: 0 0 2px black;
@@ -367,6 +370,8 @@ table {
     width: 100%;
     height: 100%;
     z-index: 10;
+    /* 画像読込前の白フラッシュ防止 */
+    background-color: #14181c;
 }
 .hero {
     position: relative;
@@ -384,7 +389,7 @@ table {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('~/assets/img/service1.png');
+    background-image: url('~/assets/img/service1.webp');
     background-size: cover;
     background-position: center;
     opacity: 0.5;
@@ -397,7 +402,7 @@ table {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('~/assets/img/service2.png');
+    background-image: url('~/assets/img/service2.webp');
     background-size: cover;
     background-position: center;
     opacity: 0.5;
@@ -410,7 +415,7 @@ table {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('~/assets/img/service3.jpg');
+    background-image: url('~/assets/img/service3.webp');
     background-size: cover;
     background-position: center;
     opacity: 0.5;
@@ -423,7 +428,7 @@ table {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('~/assets/img/service4.png');
+    background-image: url('~/assets/img/service4.webp');
     background-size: cover;
     background-position: center;
     opacity: 0.5;
@@ -443,7 +448,7 @@ table {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('~/assets/img/service5.png');
+    background-image: url('~/assets/img/service5.webp');
     background-size: cover;
     background-position: center;
     opacity: 0.5;
@@ -456,7 +461,7 @@ table {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('~/assets/img/service6.png');
+    background-image: url('~/assets/img/service6.webp');
     background-size: cover;
     background-position: center;
     opacity: 0.5;
@@ -469,7 +474,7 @@ table {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('~/assets/img/service7.jpg');
+    background-image: url('~/assets/img/service7.webp');
     background-size: cover;
     background-position: center;
     opacity: 0.5;
@@ -482,7 +487,7 @@ table {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('~/assets/img/service8.jpg');
+    background-image: url('~/assets/img/service8.webp');
     background-size: cover;
     background-position: center;
     opacity: 0.5;
@@ -525,6 +530,11 @@ table {
 
 .hero-content p {
     font-size: 3vw;
+}
+
+/* 語句の途中で改行させないためのインラインブロック */
+.ib {
+    display: inline-block;
 }
 
 .content {
